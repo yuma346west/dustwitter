@@ -1,3 +1,6 @@
+/*
+main package
+*/
 package main
 
 import (
@@ -5,19 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// main function
 func main() {
 	engine := gin.Default()
 
-	userAgent := "undefined"
+	//userAgent := "undefined"
 	engine.LoadHTMLGlob("templates/*")
 
 	router.SetRouter(engine)
 
 	// ミドルウェア UserAgentの取得
-	engine.Use(func(c *gin.Context) {
-		userAgent = c.GetHeader("User-Agent")
-		c.Next()
-	})
+	//engine.Use(func(c *gin.Context) {
+	//	userAgent = c.GetHeader("User-Agent")
+	//	c.Next()
+	//})
 
 	err := engine.Run(":3001")
 	if err != nil {
